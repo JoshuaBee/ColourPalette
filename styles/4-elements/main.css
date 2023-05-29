@@ -1,0 +1,25 @@
+/*--------------------------------//
+//                                //
+//              Main              //
+//                                //
+//--------------------------------*/
+main {
+    display: grid;
+    gap: 1rem;
+    grid-template:
+        "input" auto
+        "swatches" auto
+        "output" auto;
+    padding: 1rem;
+}
+
+@media (min-width: 1024px) {
+    main {
+        column-gap: 4rem;
+        grid-template-areas:
+            "swatches input"
+            "swatches output";
+        grid-template-columns: 1fr 1fr;
+        row-gap: 0;
+    }
+}

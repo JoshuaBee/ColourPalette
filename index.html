@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<link rel="preconnect" href="https://font.gstatic.com/" crossorigin>
+
+		<title>Colour Palette</title>
+		<meta charset="utf-8" />
+		<meta name="author" content="Joshua Bee" />
+		<meta name="description" content="Colour Palette" />
+		<!-- Let browser know website is optimized for mobile -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="icon" type="image/png" href="images/logos/logo-192.png" />
+		<link rel="apple-touch-icon" href="images/logos/logo-192.png">
+		<link rel="canonical" href="https://palette.joshuabee.dev/" />
+
+		<!-- Progressive Web App -->
+		<meta name="theme-color" content="#b4025e" />
+		<link rel="manifest" href="manifest.webmanifest" />
+
+		<!-- Settings -->
+		<link href="styles/1-settings/color.css" rel="stylesheet" />
+
+		<!-- Tools -->
+		<link href="styles/2-tools/font.css" rel="stylesheet" />
+
+		<!-- Generic -->
+		<link href="styles/3-generic/reset.css" rel="stylesheet" />
+
+		<!-- Elements -->
+		<link href="styles/4-elements/body.css" rel="stylesheet" />
+		<link href="styles/4-elements/input.css" rel="stylesheet" />
+		<link href="styles/4-elements/main.css" rel="stylesheet" />
+		
+		<!-- Components -->
+		<link href="styles/6-components/button.css" rel="stylesheet" />
+		<link href="styles/6-components/code.css" rel="stylesheet" />
+		<link href="styles/6-components/footer.css" rel="stylesheet" />
+		<link href="styles/6-components/input.css" rel="stylesheet" />
+		<link href="styles/6-components/swatches.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		
+		<main>
+			<div class="swatches">
+				<p class="title title--big vertical" style="grid-row: 3 / span 9">Lightness</p>
+	
+				<p class="title title--big" style="grid-column: 3 / -1">Gamut</p>
+				<p class="title" style="grid-column: 3" data-gamut="sRGB">sRGB</p>
+				<p class="title" data-gamut="p3">p3</p>
+				<p class="title" data-gamut="rec2020">rec2020</p>
+
+				<p class="title vertical">90%</p>
+				<div class="swatch" data-gamut="sRGB" data-lightness="90%"></div>
+				<div class="swatch" data-gamut="p3" data-lightness="90%"></div>
+				<div class="swatch" data-gamut="rec2020" data-lightness="90%"></div>
+
+				<p class="title vertical">80%</p>
+				<div class="swatch" data-gamut="sRGB" data-lightness="80%"></div>
+				<div class="swatch" data-gamut="p3" data-lightness="80%"></div>
+				<div class="swatch" data-gamut="rec2020" data-lightness="80%"></div>
+
+				<p class="title vertical">70%</p>
+				<div class="swatch" data-gamut="sRGB" data-lightness="70%"></div>
+				<div class="swatch" data-gamut="p3" data-lightness="70%"></div>
+				<div class="swatch" data-gamut="rec2020" data-lightness="70%"></div>
+
+				<p class="title vertical">60%</p>
+				<div class="swatch" data-gamut="sRGB" data-lightness="60%"></div>
+				<div class="swatch" data-gamut="p3" data-lightness="60%"></div>
+				<div class="swatch" data-gamut="rec2020" data-lightness="60%"></div>
+
+				<p class="title vertical">50%</p>
+				<div class="swatch" data-gamut="sRGB" data-lightness="50%"></div>
+				<div class="swatch" data-gamut="p3" data-lightness="50%"></div>
+				<div class="swatch" data-gamut="rec2020" data-lightness="50%"></div>
+
+				<p class="title vertical">40%</p>
+				<div class="swatch" data-gamut="sRGB" data-lightness="40%"></div>
+				<div class="swatch" data-gamut="p3" data-lightness="40%"></div>
+				<div class="swatch" data-gamut="rec2020" data-lightness="40%"></div>
+
+				<p class="title vertical">30%</p>
+				<div class="swatch" data-gamut="sRGB" data-lightness="30%"></div>
+				<div class="swatch" data-gamut="p3" data-lightness="30%"></div>
+				<div class="swatch" data-gamut="rec2020" data-lightness="30%"></div>
+
+				<p class="title vertical">20%</p>
+				<div class="swatch" data-gamut="sRGB" data-lightness="20%"></div>
+				<div class="swatch" data-gamut="p3" data-lightness="20%"></div>
+				<div class="swatch" data-gamut="rec2020" data-lightness="20%"></div>
+
+				<p class="title vertical">10%</p>
+				<div class="swatch" data-gamut="sRGB" data-lightness="10%"></div>
+				<div class="swatch" data-gamut="p3" data-lightness="10%"></div>
+				<div class="swatch" data-gamut="rec2020" data-lightness="10%"></div>
+			</div>
+
+			
+			<div id="input">
+				<label class="title title--big">
+					Hue
+				</label>
+
+				<input
+					type="number"
+					value="0"
+				/>
+			</div>
+
+			<pre id="output">
+				<code id="code-block"></code>
+			</pre>
+		</main>
+
+		<footer>
+			<a href="https://joshuabee.dev/" target="_blank" rel="noopener noreferrer" class="footer__branding" itemscope itemtype="https://schema.org/WebSite">
+				<picture>
+					<source srcset="images/logos/company-logo-192.svg" type="image/svg+xml">
+					<img src="images/logos/company-logo-192.png" alt="Company Logo" class="footer__logo" />
+				</picture>
+				<span class="footer__title">Joshua<br />Bee</span>
+			</a>
+
+			<button id="install" type="button" class="button install-button" aria-hidden="true">
+				<span class="button__text">Install</span>
+			</button>
+		</footer>
+
+		<script src="https://colorjs.io/dist/color.global.js"></script>
+		<script src="scripts/main.js"></script>
+		<script>
+			if ('serviceWorker' in navigator) {
+			  navigator.serviceWorker.register('/service-worker.js')
+			  .then(function(registration) {
+				console.log('Service worker registration successful, scope is:', registration.scope);
+			  })
+			  .catch(function(error) {
+				console.log('Service worker registration failed, error:', error);
+			  });
+			}
+		</script>
+	</body>
+</html>

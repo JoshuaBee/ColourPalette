@@ -1,0 +1,15 @@
+/*--------------------------------//
+//                                //
+//              Code              //
+//                                //
+//--------------------------------*/
+#output {
+	display: none;
+	grid-area: output;
+}
+
+@media (min-width: 1024px) {
+    #output {
+		display: block;
+	}
+}

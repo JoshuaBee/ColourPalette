@@ -1,0 +1,33 @@
+{
+  "background_color": "#b4025e",
+  "description": "Enter a name, returns an altered version",
+  "display": "standalone",
+  "id": "/",
+  "icons": [
+    {
+      "src": "images/logos/logo-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/logos/logo-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "name": "Colour Palette",
+  "screenshots" : [
+    {
+      "src": "images/screenshots/screenshot1.webp",
+      "sizes": "3360x1670",
+      "type": "image/webp",
+      "platform": "wide",
+      "label": "Homescreen of Colour Palette"
+    }
+  ],
+  "short_name": "Colour Palette",
+  "start_url": "/",
+  "theme_color": "#b4025e"
+}
