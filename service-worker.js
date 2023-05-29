@@ -1,4 +1,4 @@
-const version = "1.00";
+const version = "1.01";
 const cacheName = "jb-${version}";
 
 self.addEventListener("install", e => {
