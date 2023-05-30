@@ -1,6 +1,6 @@
 {
   "background_color": "#b4025e",
-  "description": "Enter a name, returns an altered version",
+  "description": ":art: OKLCH Colour Palette Generator",
   "display": "standalone",
   "id": "/",
   "icons": [
