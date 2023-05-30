@@ -1,2 +1,2 @@
 # Colour Palette
-:art: 
+🎨 OKLCH Colour Palette Generator
