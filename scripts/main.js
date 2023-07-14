@@ -20,7 +20,9 @@ let p3Colours = [];
 let rec2020Colours = [];
 
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-    updateSiteColours();
+    viewTransition(() => {
+		updateSiteColours();
+	});
 });
 if ($hue) {
 	$hue.addEventListener('input', () => {
@@ -69,8 +71,58 @@ function generatePalette() {
 		}
 	});
 	
-	updateSiteColours();
-	
+	viewTransition(() => {
+		updateSiteColours();
+		updateCodeBlock();
+	});
+}
+
+function updateSiteColours() {
+	if (window.matchMedia) {
+		const srgb = window.matchMedia('(color-gamut: srgb)').matches;
+		const p3 = window.matchMedia('(color-gamut: p3)').matches;
+		const rec2020 = window.matchMedia('(color-gamut: rec2020)').matches;
+		const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+		
+		if (dark) {
+			if (rec2020) {
+				$body.style.setProperty('--color-primary', rec2020Colours[4]);
+				$body.style.setProperty('--color-primary-text', rec2020Colours[0]);
+				$body.style.setProperty('--color-background', rec2020Colours[7]);
+				$body.style.setProperty('--color-text', rec2020Colours[1]);
+			} else if (p3) {
+				$body.style.setProperty('--color-primary', p3Colours[4]);
+				$body.style.setProperty('--color-primary-text', p3Colours[0]);
+				$body.style.setProperty('--color-background', p3Colours[7]);
+				$body.style.setProperty('--color-text', p3Colours[1]);
+			} else if (srgb) {
+				$body.style.setProperty('--color-primary', sRGBColours[4]);
+				$body.style.setProperty('--color-primary-text', sRGBColours[0]);
+				$body.style.setProperty('--color-background', sRGBColours[7]);
+				$body.style.setProperty('--color-text', sRGBColours[1]);
+			}
+		} else {
+			if (rec2020) {
+				$body.style.setProperty('--color-primary', rec2020Colours[4]);
+				$body.style.setProperty('--color-primary-text', rec2020Colours[8]);
+				$body.style.setProperty('--color-background', rec2020Colours[1]);
+				$body.style.setProperty('--color-text', rec2020Colours[7]);
+			} else if (p3) {
+				$body.style.setProperty('--color-primary', p3Colours[4]);
+				$body.style.setProperty('--color-primary-text', p3Colours[8]);
+				$body.style.setProperty('--color-background', p3Colours[1]);
+				$body.style.setProperty('--color-text', p3Colours[7]);
+			} else if (srgb) {
+				$body.style.setProperty('--color-primary', sRGBColours[4]);
+				$body.style.setProperty('--color-primary-text', sRGBColours[8]);
+				$body.style.setProperty('--color-background', sRGBColours[1]);
+				$body.style.setProperty('--color-text', sRGBColours[7]);
+			}
+		}
+	}
+}
+
+function updateCodeBlock() {
 	const codeBlock = document.querySelector('#code-block');
 	if (codeBlock) {
 		codeBlock.innerHTML = `
@@ -117,48 +169,13 @@ function generatePalette() {
 	}
 }
 
-function updateSiteColours() {
-	if (window.matchMedia) {
-		const srgb = window.matchMedia('(color-gamut: srgb)').matches;
-		const p3 = window.matchMedia('(color-gamut: p3)').matches;
-		const rec2020 = window.matchMedia('(color-gamut: rec2020)').matches;
-		const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-		
-		if (dark) {
-			if (rec2020) {
-				$body.style.setProperty('--color-primary', rec2020Colours[4]);
-				$body.style.setProperty('--color-primary-text', rec2020Colours[0]);
-				$body.style.setProperty('--color-background', rec2020Colours[7]);
-				$body.style.setProperty('--color-text', rec2020Colours[1]);
-			} else if (p3) {
-				$body.style.setProperty('--color-primary', p3Colours[4]);
-				$body.style.setProperty('--color-primary-text', p3Colours[0]);
-				$body.style.setProperty('--color-background', p3Colours[7]);
-				$body.style.setProperty('--color-text', p3Colours[1]);
-			} else if (srgb) {
-				$body.style.setProperty('--color-primary', sRGBColours[4]);
-				$body.style.setProperty('--color-primary-text', sRGBColours[0]);
-				$body.style.setProperty('--color-background', sRGBColours[7]);
-				$body.style.setProperty('--color-text', sRGBColours[1]);
-			}
-		} else {
-			if (rec2020) {
-				$body.style.setProperty('--color-primary', rec2020Colours[4]);
-				$body.style.setProperty('--color-primary-text', rec2020Colours[8]);
-				$body.style.setProperty('--color-background', rec2020Colours[1]);
-				$body.style.setProperty('--color-text', rec2020Colours[7]);
-			} else if (p3) {
-				$body.style.setProperty('--color-primary', p3Colours[4]);
-				$body.style.setProperty('--color-primary-text', p3Colours[8]);
-				$body.style.setProperty('--color-background', p3Colours[1]);
-				$body.style.setProperty('--color-text', p3Colours[7]);
-			} else if (srgb) {
-				$body.style.setProperty('--color-primary', sRGBColours[4]);
-				$body.style.setProperty('--color-primary-text', sRGBColours[8]);
-				$body.style.setProperty('--color-background', sRGBColours[1]);
-				$body.style.setProperty('--color-text', sRGBColours[7]);
-			}
-		}
+function viewTransition(callback) {
+	if (document.startViewTransition) {
+		document.startViewTransition(() => {
+			callback();
+		});
+	} else {
+		callback();
 	}
 }
 
